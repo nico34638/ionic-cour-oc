@@ -30,6 +30,4 @@ export class SingleAppareilPage implements OnInit{
     this.appareil.isOn = !this.appareil.isOn;
   }
 
-
-
 }

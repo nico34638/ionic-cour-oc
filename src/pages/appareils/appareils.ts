@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, MenuController } from 'ionic-angular';
 import { SingleAppareilPage } from './single-appareil/single-appareil';
-import { Appareil } from '../../model/Appareil';
+import { Appareil } from '../../models/Appareil';
 import { AppareilsService } from '../../services/appareils.service';
 
 @Component({
@@ -10,10 +10,11 @@ import { AppareilsService } from '../../services/appareils.service';
 })
 export class AppareilsPage {
 
-  appareilsList: Appareil;
+  appareilsList: Appareil[];
 
   constructor(private modalCtrl: ModalController,
-              private appareilsService: AppareilsService) {
+              private appareilsService: AppareilsService,
+              private menuCtrl: MenuController) {
 
   }
 
@@ -24,5 +25,9 @@ export class AppareilsPage {
   onLoadAppareil(index: number) {
     let modal = this.modalCtrl.create(SingleAppareilPage, {index: index});
     modal.present();
+  }
+
+  onToggleMenu(){
+    this.menuCtrl.open();
   }
 }
